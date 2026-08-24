@@ -12,6 +12,14 @@ An enterprise-style finance audit pipeline that reconciles ERP records, grounds 
 - **Webhook simulation:** Dispatches a simulated Slack alert and Jira ticket only after controller approval.
 - **Automated tests:** Covers zero variance, overbilling, and rejected webhook behavior.
 
+## Recruiter Demo Video
+
+The generated recruiter demo video is available here:
+
+[Download the Enterprise Finance Agent demo video](videos/enterprise-finance-agent-recruiter-demo.mp4)
+
+It is a 49.13-second portrait MP4 at 1080 x 1920 resolution, featuring the Gemini-powered audit workflow, LangGraph orchestration, SQL 3-way matching, policy RAG, human approval, and audit logging.
+
 ## Architecture
 
 ```mermaid
