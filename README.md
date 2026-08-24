@@ -35,6 +35,26 @@ The seeded example contains one discrepancy:
 - Invoice amount: `$8,500.50`
 - Variance: `$300.00`
 
+## Business Logic And End-to-End Workflow
+
+The following flowchart shows the complete execution path, including data ingestion, policy retrieval, AI reasoning, human governance, artifact generation, and notification dispatch:
+
+```mermaid
+graph TD
+    A[Start: Initialize ERP SQLite DB] --> B[SQL 3-Way Matching Engine<br/>Compare PO, GRN, Invoice, and GL]
+    B -->|Variance detected: $300 overbill| C[Local RAG Policy Retrieval<br/>Fetch MSA and compliance clauses from Chroma]
+    C -->|Grounding context| D[LLM Audit Generator<br/>Gemini drafts compliance memo]
+    D -->|Human-in-the-loop checkpoint| E{Controller approval?}
+    E -->|REJECTED| F[Export JSON and PDF<br/>Mark remediation rejected]
+    E -->|APPROVED_BY_CONTROLLER| G[Export JSON and PDF<br/>Save timestamped audit artifacts]
+    F --> H[Webhook skipped]
+    G --> I[Webhook Dispatcher<br/>Simulate Slack alert and Jira ticket]
+    H --> J[End: Audit complete]
+    I --> J
+```
+
+The graph combines modern AI capabilities such as RAG, LangGraph state transitions, and LLM memo generation with conventional enterprise controls including relational ERP records, approval governance, immutable-style audit exports, and downstream incident notifications.
+
 ## Requirements
 
 - Python 3.13 or compatible Python version
