@@ -1,0 +1,10 @@
+pandas
+numpy
+python-dotenv
+langchain-google-genai
+langchain-core
+langgraph
+reportlab
+chromadb
+langchain-community
+pytest
