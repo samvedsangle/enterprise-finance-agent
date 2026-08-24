@@ -12,7 +12,7 @@ An enterprise-style finance audit pipeline that reconciles ERP records, grounds 
 - **Webhook simulation:** Dispatches a simulated Slack alert and Jira ticket only after controller approval.
 - **Automated tests:** Covers zero variance, overbilling, and rejected webhook behavior.
 
-## Recruiter Demo Video
+## Demo Video
 
 The generated recruiter demo video is available here:
 
