@@ -1,0 +1,3 @@
+transaction_id,account_code,posting_date,department,po_id,vendor_name,approved_amount,grn_id,received_quantity,invoice_id,billed_amount,variance_status
+GL-9001,ACC-400,2026-06-10,Engineering,PO-101,CloudScale Inc,14500.00,GRN-301,10,INV-501,14500.00,MATCHED
+GL-9002,ACC-420,2026-06-12,Finance,PO-102,SaaS Metrics Corp,8200.50,GRN-302,5,INV-502,8500.50,OVERBILLED_VARIANCE

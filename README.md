@@ -127,13 +127,15 @@ The test suite verifies:
 ```text
 .
 ├── app.py
+├── data/
+│   └── erp_mock_transactions.csv
 ├── enterprise_finance.db
-├── audit_logs/
 ├── tests/
 │   └── test_agent.py
 ├── pytest.ini
-├── .env
-└── venv/
+├── requirements.txt
+├── .env.example
+└── .gitignore
 ```
 
 ## Database Schema
@@ -146,6 +148,19 @@ The test suite verifies:
 - `vendor_invoices`
 
 The initializer detects the original invoice schema and adds the missing `po_id` column when upgrading an existing database.
+
+## Dataset Design And Data Lineage
+
+To demonstrate a secure Procure-to-Pay environment without exposing proprietary financial records, this project uses a synthetic dataset. The denormalized CSV representation is available at [`data/erp_mock_transactions.csv`](data/erp_mock_transactions.csv) and the application seeds the same records into SQLite when it starts.
+
+The CSV provides a reviewer-friendly view of the lineage across the four relational ERP tables:
+
+1. **`general_ledger` (GL):** Financial postings with account codes, dates, departments, and recorded amounts.
+2. **`purchase_orders` (PO):** Approved spending baselines for vendors, such as `PO-102` for SaaS Metrics Corp at `$8,200.50`.
+3. **`goods_received` (GRN):** Evidence that goods or services were received, such as `GRN-302` confirming five units.
+4. **`vendor_invoices`:** Supplier billing records linked to the PO and GL transaction.
+
+The dataset intentionally includes one controlled anomaly: `INV-502` bills `$8,500.50` against a `$8,200.50` PO, allowing the pipeline to detect the `$300.00` (`3.66%`) overbilling variance.
 
 ## Policy Corpus
 
