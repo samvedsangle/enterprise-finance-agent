@@ -14,7 +14,7 @@ An enterprise-style finance audit pipeline that reconciles ERP records, grounds 
 
 ## Demo Video
 
-The generated recruiter demo video is available here:
+
 
 [Download the Enterprise Finance Agent demo video](videos/enterprise-finance-agent-recruiter-demo.mp4)
 
